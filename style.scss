@@ -1,4 +1,9 @@
 $primaryColor: #7ed321;
+$maxWidthContainer: 1170;
+$md1: $maxWidthContainer + 12;
+$md2: 991.98;
+$md3: 767.98;
+$md4: 479.98;
 
 *,
 *:before,
@@ -38,12 +43,66 @@ select {
 	transition: all 0.35s ease-in-out;
 }
 
+input[type="checkbox"] {
+	display: none;
+
+	& + label {
+		position: relative;
+		display: block;
+		padding-left: 1.6em;
+		margin-bottom: 2rem;
+		cursor: pointer;
+		color: black;
+
+		&::before {
+			position: absolute;
+			// top: 0.2rem;
+			display: block;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			display: block;
+			width: 2rem;
+			height: 2rem;
+			padding: 0;
+			content: "";
+		}
+
+		&::after {
+			position: absolute;
+			border-radius: 5px;
+			text-align: center;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			width: 2rem;
+			height: 2rem;
+			font-size: 1.2rem;
+			background-color: $primaryColor;
+			color: #fff;
+			opacity: 0;
+			font-family: FontAwesome;
+			content: "\f00c";
+		}
+	}
+
+	&:checked + label:after {
+		opacity: 1;
+	}
+}
+
 input,
 select {
 	position: relative;
 }
 
-input:required::after,
+// input:required::after,
 input:required + label::after {
 	content: "*";
 	font-size: 1.5rem;
@@ -77,9 +136,39 @@ select option {
 	margin: 0em auto;
 	background-color: #fff;
 	border-radius: 4.2px;
+
+	// @media (max-width: $md1 + px) {
+	// 	max-width: 970px;
+	// }
+	// @media (max-width: $md2 + px) {
+	// 	max-width: 750px;
+	// }
+	// @media (max-width: $md3 + px) {
+	// 	max-width: none;
+	// 	padding: 0 10px;
+	// }
+	@media (max-width: $md4 + px) {
+		padding: 1rem 0.5rem;
+	}
 }
 
 .form {
+	.required {
+		display: inline-block;
+		position: relative;
+		width: auto;
+
+		&::after {
+			content: "*";
+			font-size: 1.5rem;
+			color: red;
+			position: absolute;
+			top: 0;
+			right: -1rem;
+			display: block;
+		}
+	}
+
 	&__basic {
 	}
 
@@ -119,11 +208,22 @@ select option {
 
 	&__birth-date {
 		width: 49% !important;
+
+		@media (max-width: $md4 + px) {
+			width: 100% !important;
+		}
 	}
 
 	&__gender {
 		width: 49% !important;
-		// display: flex;
+
+		@media (max-width: $md4 + px) {
+			width: 100% !important;
+		}
+
+		label {
+			margin-bottom: 2rem;
+		}
 
 		input[type="radio"] {
 			display: none;
@@ -162,18 +262,24 @@ select option {
 
 		select {
 			overflow: hidden;
-			// padding: 0rem 0rem;
-
-			&::after {
-				content: "*";
-				font-size: 1.5rem;
-				color: red;
-				position: absolute;
-				top: 0;
-				right: 0.5rem;
-				display: block;
-			}
+			padding: 0rem 0rem;
 		}
+
+		// span {
+		// 	display: inline-block;
+		// 	position: relative;
+		// 	width: auto;
+
+		// 	&::after {
+		// 		content: "*";
+		// 		font-size: 1.5rem;
+		// 		color: red;
+		// 		position: absolute;
+		// 		top: 0;
+		// 		right: -1rem;
+		// 		display: block;
+		// 	}
+		// }
 	}
 
 	&__doctor {
@@ -209,6 +315,26 @@ select option {
 	}
 
 	&__document {
+		position: relative;
+
+		select {
+		}
+
+		// span {
+		// 	display: inline-block;
+		// 	position: relative;
+		// 	width: auto;
+
+		// 	&::after {
+		// 		content: "*";
+		// 		font-size: 1.5rem;
+		// 		color: red;
+		// 		position: absolute;
+		// 		top: 0;
+		// 		right: -1rem;
+		// 		display: block;
+		// 	}
+		// }
 	}
 
 	&__series {
@@ -221,6 +347,17 @@ select option {
 	}
 
 	&__issue-date {
+	}
+
+	&__submit {
+		margin-top: 2rem;
+
+		input {
+			font-size: 1.5rem;
+			background-color: $primaryColor;
+			color: #fff;
+			border-color: #64ac15;
+		}
 	}
 }
 
