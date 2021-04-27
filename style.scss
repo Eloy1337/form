@@ -1,4 +1,5 @@
-$primaryColor: #7ed321;
+// $primaryColor: #7ed321;
+$primaryColor: #5596d3;
 $maxWidthContainer: 1170;
 $md1: $maxWidthContainer + 12;
 $md2: 991.98;
@@ -184,7 +185,7 @@ select option {
 		color: #000;
 		font-size: 2rem;
 		padding: 1.5rem;
-		border: solid 2px rgba(#7ed321, 0.4);
+		border: solid 2px rgba($primaryColor, 0.4);
 		border-radius: 10px;
 		margin-bottom: 2rem;
 	}
@@ -198,7 +199,7 @@ select option {
 			width: 100%;
 		}
 
-		border: solid 2px rgba(#7ed321, 0.4);
+		border: solid 2px rgba($primaryColor, 0.4);
 		border-radius: 10px;
 		margin-top: 2rem;
 		padding: 0 2rem;
@@ -239,7 +240,7 @@ select option {
 			&:checked + label {
 				background-color: $primaryColor;
 				color: #fff;
-				border-color: #64ac15;
+				border-color: darken($primaryColor, 20%);
 			}
 		}
 
@@ -371,7 +372,7 @@ select option {
 			font-size: 1.5rem;
 			background-color: $primaryColor;
 			color: #fff;
-			border-color: #64ac15;
+			border-color: darken($primaryColor, 20%);
 		}
 	}
 }
